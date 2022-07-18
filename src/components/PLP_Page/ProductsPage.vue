@@ -3,14 +3,17 @@
       <div v-if="noCollection" class="error-message"><h2>No Collection Found!</h2></div>
       <Hero v-else :image="collectionImage" :title="collectionTitle" :filters="collectionFilters" />
       <InfoBox :products="productList" />
+      <h2 v-if="productIsLoading">Loading...</h2>
+      <ProductsList v-else :products="productList" />
    </div>
 </template>
 
 <script>
 import Hero from "./Hero.vue";
 import InfoBox from "./InfoBox.vue";
+import ProductsList from "./ProductsList.vue";
 export default {
-   components: { Hero, InfoBox },
+   components: { Hero, InfoBox, ProductsList },
    data() {
       return {
          collection: {},
