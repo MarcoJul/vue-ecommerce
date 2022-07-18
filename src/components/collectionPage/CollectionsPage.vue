@@ -1,10 +1,21 @@
 <template>
-   <h1>The Collection Page</h1>
-   <div class="collections-box"></div>
+   <div class="collections-box">
+      <collection-item
+         v-for="collection in collections"
+         :id="collection.id"
+         :key="collection.id"
+         :handle="collection.handle"
+         :image="collection.image"
+         :title="collection.title"
+      >
+      </collection-item>
+   </div>
 </template>
 
 <script>
+import CollectionItem from "./CollectionItem.vue";
 export default {
+   components: { CollectionItem },
    data() {
       return {
          collections: [],
@@ -30,7 +41,6 @@ export default {
                   });
                }
                this.collections = results;
-               console.log(results);
             })
             .catch((err) => {
                console.log(err);
