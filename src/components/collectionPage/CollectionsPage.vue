@@ -1,11 +1,10 @@
 <template>
    <h1>The Collection Page</h1>
+   <div class="collections-box"></div>
 </template>
 
 <script>
-import CollectionItem from "./CollectionItem.vue";
 export default {
-   components: { CollectionItem },
    data() {
       return {
          collections: [],
@@ -31,6 +30,7 @@ export default {
                   });
                }
                this.collections = results;
+               console.log(results);
             })
             .catch((err) => {
                console.log(err);
@@ -42,3 +42,12 @@ export default {
    },
 };
 </script>
+
+<style>
+.collections-box {
+   display: flex;
+   width: 100vw;
+   align-items: center;
+   justify-content: center;
+}
+</style>
