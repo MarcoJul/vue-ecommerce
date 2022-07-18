@@ -48,7 +48,6 @@ export default {
       route: {
          handler(value) {
             if (!value) return;
-            console.log(value === "home-and-garden");
             return this.$route.params.collectionName;
          },
          immediate: true,
