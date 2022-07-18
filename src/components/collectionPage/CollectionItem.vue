@@ -24,12 +24,12 @@ export default {
    overflow: hidden;
    position: relative;
    cursor: pointer;
-   height: 80rem;
+   height: 85rem;
 }
 
 .collection-image {
    transform: translateX(-30%);
-   height: 80rem;
+   height: 85rem;
 }
 .filter {
    background-color: rgba(0, 0, 0, 0.6);
