@@ -2,13 +2,15 @@
    <div class="hero-box">
       <div v-if="noCollection" class="error-message"><h2>No Collection Found!</h2></div>
       <Hero v-else :image="collectionImage" :title="collectionTitle" :filters="collectionFilters" />
+      <InfoBox :products="productList" />
    </div>
 </template>
 
 <script>
 import Hero from "./Hero.vue";
+import InfoBox from "./InfoBox.vue";
 export default {
-   components: { Hero },
+   components: { Hero, InfoBox },
    data() {
       return {
          collection: {},
