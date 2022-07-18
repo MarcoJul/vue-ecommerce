@@ -1,14 +1,18 @@
 <template>
+   <MainHeader />
    <router-view></router-view>
 </template>
 
 <script>
+import MainHeader from "./components/Layout/MainHeader.vue";
 export default {
    data() {
       return {
          collections: [],
       };
    },
+
+   components: { MainHeader },
 };
 </script>
 
