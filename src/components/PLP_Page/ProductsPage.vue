@@ -18,8 +18,6 @@ export default {
          productIsLoading: false,
       };
    },
-
-   ////////////////
    computed: {
       route() {
          return this.$route.params.collectionName;
@@ -38,22 +36,15 @@ export default {
          return this.collection.collection_id;
       },
       collectionFilters() {
-         // const filters = [];
-         // this.products.map((product) => {
-         //    if (!filters.includes(product.product_type)) filters.push(product.product_type);
-         // });
          return this.products.reduce((result, curr) => {
             if (!result.includes(curr.product_type)) result.push(curr.product_type);
             return result;
          }, []);
-
-         // return filters;
       },
       productList() {
          return this.products;
       },
    },
-   ////////////////
    watch: {
       route: {
          handler(value) {
@@ -77,7 +68,6 @@ export default {
          this.productIsLoading = false;
       },
    },
-   ////////////////
    methods: {
       async getCollection(route) {
          if (!route) return;
@@ -85,7 +75,6 @@ export default {
             const response = await fetch(
                "https://4ilk3v7wbk.execute-api.eu-west-1.amazonaws.com/dev/collection_listings.json"
             );
-            // if (!response.ok) throw new Error("errore!");
             const data = await response.json();
 
             console.log("collections", data);
@@ -95,13 +84,7 @@ export default {
          } catch (err) {
             this.noCollection = true;
          }
-
-         // this.loadProducts(this.collectionId);
       },
-
-      // createFilter(products) {
-      //    this.filters = []; ///// NON SONO CONVINTO
-      // },
    },
 };
 </script>
