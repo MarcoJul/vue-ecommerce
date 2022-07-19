@@ -1,5 +1,5 @@
 <template>
-  <div class="product-container">
+  <div class="product-container" v-if="!isLoading">
     <div class="image-container">
       <img :src="product.image?.src" :alt="product.title" />
     </div>
@@ -30,6 +30,7 @@ export default {
   data() {
     return {
       product: {},
+      isLoading: false,
     };
   },
   computed: {
@@ -56,6 +57,7 @@ export default {
   },
   methods: {
     async getProduct(productId) {
+      this.isLoading = true;
       if (!productId) return;
       try {
         const response = await fetch(
@@ -65,6 +67,7 @@ export default {
         this.product = data.product;
         console.log("product", this.product);
         console.log("route product", this.$route.params);
+        this.isLoading = false;
       } catch (err) {
         console.log(err);
       }
