@@ -1,7 +1,13 @@
 <template>
    <div class="hero-box">
       <div v-if="noCollection" class="error-message"><h2>No Collection Found!</h2></div>
-      <Hero v-else :image="collectionImage" :title="collectionTitle" :filters="collectionFilters" />
+      <Hero
+         v-else
+         :image="collectionImage"
+         :title="collectionTitle"
+         :filters="collectionFilters"
+         @active-filter="filterProducts"
+      />
       <InfoBox :products="productList" />
       <h2 v-if="productIsLoading">Loading...</h2>
       <ProductsList v-else :products="productList" />
@@ -89,6 +95,9 @@ export default {
          } catch (err) {
             this.noCollection = true;
          }
+      },
+      filterProducts(filterName) {
+         console.log(filterName);
       },
    },
 };

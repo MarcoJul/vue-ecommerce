@@ -55,6 +55,7 @@ export default {
    methods: {
       selectFilter(name) {
          this.activeFilter = name;
+         this.$emit("active-filter", name);
       },
    },
 };
