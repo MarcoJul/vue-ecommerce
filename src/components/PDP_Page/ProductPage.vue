@@ -127,6 +127,8 @@ export default {
   font-size: 1.6rem;
   margin-bottom: 1.6rem;
   font-weight: 400;
+  max-width: 45rem;
+  text-align: center;
 }
 .vendor {
   margin-bottom: 1.6rem;
