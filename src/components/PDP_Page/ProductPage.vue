@@ -1,5 +1,12 @@
 <template>
-  <h1>{{ product.title }}</h1>
+  <div class="product-container">
+    <div class="image-container">
+      <img :src="product.image?.src" :alt="product.title" />
+    </div>
+    <div class="product-info-container">
+      <h2>{{ product.title }}</h2>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -40,3 +47,14 @@ export default {
   },
 };
 </script>
+
+<style>
+.product-container {
+  display: flex;
+}
+
+.image-container {
+  width: 40%;
+  overflow: hidden;
+}
+</style>
