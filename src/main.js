@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import App from "./App.vue";
 import CollectionsPage from "./components/collectionPage/CollectionsPage.vue";
 import ProductsPage from "./components/PLP_Page/ProductsPage.vue";
+import ProductPage from "./components/PDP_Page/ProductPage.vue";
 
 const router = createRouter({
    history: createWebHistory(),
@@ -14,6 +15,7 @@ const router = createRouter({
          component: CollectionsPage,
       },
       { path: "/collections/:collectionName", component: ProductsPage },
+      { path: "/collections/:collectionName/:id", component: ProductPage },
 
       { path: "/:NotFound(.*)", redirect: "/collections" },
    ],

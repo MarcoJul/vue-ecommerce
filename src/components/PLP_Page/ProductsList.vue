@@ -2,17 +2,19 @@
    <div class="product-list">
       <ul class="product-item" v-for="product in products">
          <li :key="product.id" class="card">
-            <div class="image-box">
-               <img :src="product.image.src" alt="" />
-            </div>
-            <div class="product-info-box">
-               <p class="vendor">{{ product.vendor }}</p>
-               <h2 class="product-title">{{ product.title }}</h2>
-               <div class="prices">
-                  <p class="original-price">80.00 €</p>
-                  <p class="final-Price">69,90 €</p>
+            <router-link :to="`/collections/${collectionName}/${product.id}`">
+               <div class="image-box">
+                  <img :src="product.image.src" alt="" />
                </div>
-            </div>
+               <div class="product-info-box">
+                  <p class="vendor">{{ product.vendor }}</p>
+                  <h2 class="product-title">{{ product.title }}</h2>
+                  <div class="prices">
+                     <p class="original-price">80.00 €</p>
+                     <p class="final-Price">69,90 €</p>
+                  </div>
+               </div>
+            </router-link>
          </li>
       </ul>
    </div>
@@ -20,7 +22,7 @@
 
 <script>
 export default {
-   props: ["products"],
+   props: ["products", "collectionName"],
    methods: {},
 };
 </script>

@@ -1,10 +1,16 @@
 <template>
    <div class="hero-box">
       <div v-if="noCollection" class="error-message"><h2>No Collection Found!</h2></div>
-      <Hero v-else :image="collectionImage" :title="collectionTitle" :filters="collectionFilters" />
-      <InfoBox :products="productList" />
+      <Hero
+         v-else
+         :image="collectionImage"
+         :title="collectionTitle"
+         :filters="collectionFilters"
+         @active-filter="filterProducts"
+      />
+      <InfoBox :products="filteredProducts" />
       <h2 v-if="productIsLoading">Loading...</h2>
-      <ProductsList v-else :products="productList" />
+      <ProductsList v-else :products="filteredProducts" :collectionName="route" />
    </div>
 </template>
 
@@ -18,9 +24,11 @@ export default {
       return {
          collection: {},
          products: [],
+         filteredProducts: [],
          noProduct: false,
          noCollection: false,
          productIsLoading: false,
+         filter: "",
       };
    },
    computed: {
@@ -71,6 +79,21 @@ export default {
          console.log("products", data);
          this.products = data.products;
          this.productIsLoading = false;
+         this.filter = "All";
+      },
+      filter: {
+         handler(value) {
+            console.log("value", value);
+            if (value === "All") {
+               console.log("tutti");
+               this.filteredProducts = this.productList;
+               return;
+            }
+            this.filteredProducts = this.productList.filter((product) => product.product_type === value);
+            console.log("productsfilter", this.filteredProducts);
+            return this.filteredProducts;
+         },
+         immediate: true,
       },
    },
    methods: {
@@ -89,6 +112,10 @@ export default {
          } catch (err) {
             this.noCollection = true;
          }
+      },
+      filterProducts(filterName) {
+         this.filter = filterName;
+         console.log("filter", this.filter);
       },
    },
 };
