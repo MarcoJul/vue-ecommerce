@@ -49,7 +49,6 @@ export default {
   watch: {
     route: {
       handler(value) {
-        console.log(value);
         this.getProduct(value);
       },
       immediate: true,
@@ -65,15 +64,12 @@ export default {
         );
         const data = await response.json();
         this.product = data.product;
-        console.log("product", this.product);
-        console.log("route product", this.$route.params);
         this.isLoading = false;
       } catch (err) {
         console.log(err);
       }
     },
     normalizeName(text) {
-      console.log(text.split("-"));
       const modified = text.split("-").reduce((string, curr) => {
         const piece = curr.charAt(0).toUpperCase() + curr.slice(1) + "";
         return `${string} ${piece}`;
